@@ -181,3 +181,100 @@ from `/policies/policy-list` and look at it.
    `appended_pages_inline.html`.
 3. Add the conditional field described in section 5 so it stays hidden on the form.
 4. Download the PDF from the front end and confirm the page count.
+
+---
+
+# ROUND 2 - conditional exclusion pages (10 Aug 2026)
+
+## 10. What changed
+
+Two of the nine appended pages are no longer printed on every policy.
+
+### PUNITIVE AND EXEMPLARY DAMAGE EXCLUSION
+Prints only when the form field `punitive_damages` ("Exclude punitive damages
+coverage") is set to `Yes`. Otherwise the page is not in the document at all.
+
+### NAMED DRIVER EXCLUSION ENDORSEMENT
+Prints only for drivers actually marked as excluded, and fills itself in:
+
+    NAME OF EXCLUDED DRIVER   first + last name of that driver
+    DATE OF BIRTH             that driver's date of birth field
+    RELATIONSHIP TO APPLICANT that driver's relation field
+
+Each excluded driver gets their own endorsement page with its own signature and
+date line. Two excluded drivers = two endorsement pages. None excluded = no page.
+
+## 11. IMPORTANT gotcha - the "excluded?" dropdowns default to Y
+
+`Is_Second_driver_excluded`, `Is_third_driver_excluded` and
+`Is_fourth_driver_excluded` are dropdowns whose options are `Y` then `N`. RSForm
+stores the FIRST option when the question is never answered, so on a policy with
+only one driver all three of these read `Y`.
+
+Testing this on live policies confirmed it - 11932, 11923 and 11900 all store
+`X2=Y; X3=Y; X4=Y` while only having one extra driver.
+
+So the exclusion test alone is not safe. Every block is guarded by two nested
+tests, driver-exists FIRST:
+
+    {if {Is_there_a_second_driver_:value}="Y"}{if {Is_Second_driver_excluded:value}="Y"} ... {/if}{/if}
+
+If the existence test is ever removed, every policy will print three exclusion
+pages. That is the single most important line to preserve.
+
+## 12. Why the logic could not go in the stored text block
+
+RSForm replaces placeholders in ONE pass. A `{field:value}` or `{if}` written
+INSIDE a free-text component is not processed - it prints literally. Verified on
+the live site with an invisible test marker: the PDF came back showing the raw
+text `{First Name:value}` and `{if {punitive_damages:value}="Yes"}`.
+
+So all conditions and all dynamic values must live in the menu 350 layout. The
+free-text components hold only fixed wording.
+
+The Directory "script called on view" PHP hook was considered and rejected:
+placeholders are substituted into the PHP source as literal text, so a driver
+named O'Brien would break the script. Keeping the values in HTML avoids that
+class of failure entirely.
+
+## 13. New free-text components on form 11
+
+| Component | id | Holds |
+| --- | --- | --- |
+| `extra_pages` (existing, rewritten) | 3383 | first 3 disclosure pages |
+| `punitive_page` | 3384 | the punitive exclusion page |
+| `nde_page` | 3385 | exclusion endorsement heading + wording |
+| `nde_sign` | 3386 | the signature/date line for that page |
+| `extra_pages_2` | 3387 | remaining 4 disclosure pages |
+
+The document order is unchanged from the version already approved - the two
+conditional pages sit exactly where they were, between `extra_pages` and
+`extra_pages_2`.
+
+`nde_page` ends with an unclosed `<div>` which `nde_sign` closes. That is
+deliberate: the driver's name/date-of-birth/relationship lines are written
+between them by the menu layout, and the wrapper keeps the whole block from
+splitting across two pages.
+
+All four new components have a hiding condition (same contradictory-rule trick
+as `extra_pages`) so they never appear on the public form. Confirmed in a real
+browser: all render `display: none`, and none appear in the submissions list or
+any export, so CSV exports are unaffected.
+
+## 14. Verified on real downloads
+
+| Policy | Stored values | Result |
+| --- | --- | --- |
+| 11932 | E2=Y X2=Y, E3=N E4=N, punitive empty | 19 pages, ONE endorsement page filled in "ELAINE STEVENS / 22 / 4 / 1982 / Spouse", no punitive page |
+| 11700 | E2=N, no reimbursement section, punitive empty | 13 pages, no endorsement page, no punitive page |
+| 11932 (punitive test) | condition temporarily matched | 20 pages, punitive page renders correctly in its original position (page 15) |
+
+Zero leftover template code (`{if`, `:value}`, `{/if}`) in any output.
+
+## 15. Open point - date format
+
+Dates of birth print as stored by the form, which is set to day/month/year with
+a " / " separator, e.g. `12 / 3 / 1979` meaning 12 March 1979. On a US document
+that reads as 3 December to most people. Changing the `Dob_driver_2/3/4` fields
+to month/day/year in RSForm would fix it everywhere - say the word and it is a
+two-minute change.
