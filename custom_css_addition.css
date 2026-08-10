@@ -1,0 +1,130 @@
+
+/* ============================================================
+   Crown Superior - usability fixes, 10 Aug 2026
+   1. Mobile menu: show that an item has sub-items
+   2. Form fields: make the boxes visible
+   ============================================================ */
+
+/* ---------- 1. MOBILE MENU DROP-DOWN INDICATOR ----------
+   The off-canvas menu already has a working toggle:
+   <a>Menu title<span class="menu-toggler"></span></a>
+   It is 34x38px, fully transparent and has no icon in it, so there is
+   nothing on screen telling you the item opens. Tapping it does not
+   navigate - it adds .menu-parent-open to the <li>. All this does is
+   make that existing control visible.
+   (The older .offcanvas-menu-toggler rules further up this file target a
+   class this template no longer outputs, which is why they never showed.) */
+
+.offcanvas-menu .sp-module ul > li.menu-parent > a {
+    position: relative;
+    padding-right: 54px !important;
+}
+
+/* left:auto is required - the template already sets left on this element,
+   and in a left-to-right page 'left' wins over 'right' when both are set. */
+.offcanvas-menu .sp-module ul > li.menu-parent > a .menu-toggler {
+    position: absolute !important;
+    left: auto !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 34px !important;
+    height: 34px !important;
+    display: block !important;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    background: #ffffff;
+    transition: background .2s ease, border-color .2s ease;
+}
+
+/* the chevron itself - positioned, not a flex item, so it cannot be
+   squashed down to a sliver */
+.offcanvas-menu .sp-module ul > li.menu-parent > a .menu-toggler::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid #343a40;
+    border-bottom: 2px solid #343a40;
+    transform: translate(-50%, -70%) rotate(45deg);
+    transition: transform .2s ease, border-color .2s ease;
+}
+
+/* opened state - filled gold, chevron flips up */
+.offcanvas-menu .sp-module ul > li.menu-parent-open > a .menu-toggler {
+    background: #c9a227;
+    border-color: #c9a227;
+}
+
+.offcanvas-menu .sp-module ul > li.menu-parent-open > a .menu-toggler::before {
+    border-right-color: #ffffff;
+    border-bottom-color: #ffffff;
+    transform: translate(-50%, -30%) rotate(-135deg);
+}
+
+/* sub-items sit in from their parent, with a rule down the side, so it is
+   obvious they belong to the item above them */
+.offcanvas-menu .sp-module ul > li.menu-parent > ul.menu-child {
+    margin-left: 14px !important;
+    padding-left: 16px !important;
+    border-left: 2px solid #e3dcc3;
+}
+
+
+/* ---------- 2. FORM FIELDS ----------
+   Fields were #fff with a #ced4da border on a white page - almost
+   invisible on brighter screens. Darker border, light fill, and a clear
+   gold highlight on the field being typed in. */
+
+#sp-component .form-control,
+#sp-component .form-select,
+#sp-component .rsform-input-box,
+#sp-component .rsform-select-box,
+#sp-component .rsform-text-box,
+#sp-component .rsform-text-area,
+#sp-component input[type="text"],
+#sp-component input[type="email"],
+#sp-component input[type="tel"],
+#sp-component input[type="number"],
+#sp-component input[type="password"],
+#sp-component input[type="date"],
+#sp-component select,
+#sp-component textarea {
+    border: 1px solid #7a828c !important;
+    background-color: #f6f7f9 !important;
+    border-radius: 6px !important;
+    color: #212529 !important;
+}
+
+#sp-component .form-control:focus,
+#sp-component .form-select:focus,
+#sp-component .rsform-input-box:focus,
+#sp-component .rsform-select-box:focus,
+#sp-component .rsform-text-box:focus,
+#sp-component .rsform-text-area:focus,
+#sp-component input[type="text"]:focus,
+#sp-component input[type="email"]:focus,
+#sp-component input[type="tel"]:focus,
+#sp-component input[type="number"]:focus,
+#sp-component input[type="password"]:focus,
+#sp-component input[type="date"]:focus,
+#sp-component select:focus,
+#sp-component textarea:focus {
+    border-color: #c9a227 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, .28) !important;
+    outline: none !important;
+}
+
+#sp-component ::placeholder {
+    color: #8b929b !important;
+    opacity: 1;
+}
+
+/* keep the required-field marker readable */
+#sp-component .formRequired,
+#sp-component .rsform-block .formRed {
+    color: #b3261e !important;
+}
