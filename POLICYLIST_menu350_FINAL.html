@@ -1,0 +1,932 @@
+<div>
+    <table style="width:100%;">
+        <tbody>
+            <tr>
+                <td style="width: 33.333%;">
+
+                </td>
+                <td style="width: 33.333%;">
+
+
+<img class="only-pdf" src="https://crownsuperior.com/images/logo-pdf.jpg" height="50" alt="Crown Superior">
+
+                </td>
+                <td style="width: 33.333%;">
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="padding:5px; margin-bottom:5px; display:block; width: 100%;">
+        <table style="width:100%;">
+            <tbody>
+                <tr>
+                    <td style="width: 66.666%;">
+                        <span style="font-size:12px; font-weight:400;">{Agency:value}</span>
+                        <br>
+                        <br>
+                        <br>
+                    </td>
+                    <td style="width: 33.333%;">
+                        <span style="font-size:12px; font-weight:400;">{Insurance Company :value}</span><br>
+                        <span style="font-size:12px; font-weight:400;"><strong>Policy Number:</strong> {Policy number:value}</span><br>
+                        <span style="font-size:12px; font-weight:400;">{First Name:value} {Last Name:value}</span><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="padding:5px; margin-bottom:5px; display:block; width: 100%;">
+        <div>
+            <span style="font-size:19px; font-weight:700; margin-bottom:20px;">Policy Details</span><br><br>
+        </div>
+        <div>
+            <span style="font-size:15px; font-weight:700; margin-bottom:20px;">{First Name:value} {Last Name:value}</span><br><br>
+            <span style="font-size:12px; font-weight:400; margin-bottom:10px;">This document is issued as a matter of
+                information only and confers no rights upon the document holder.
+                This document does not amend, extend, or alter the coverage, terms, exclusions, conditions, or other
+                provisions afforded by the policies referenced herein.</span>
+        </div>
+    </div>
+
+    <div style="padding:5px; margin-bottom:5px; margin-top:20px; display:block; width: 100%;">
+        <div>
+            <span style="font-size:16px; font-weight:700; margin-bottom:20px;">Policy and driver
+                information</span><br><br>
+        </div>
+        <table style="width:100%; padding-left:30px; border-spacing:0; border-collapse:collapse;">
+            <tbody>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Policy number: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Policy number:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Policy state: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Policy State :value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Policy period: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{today_date_amin:value} -
+                            {exp_date_amin:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Effective date: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{today_date_amin:value}</span>
+                    </td>
+                </tr>
+
+<tr style="border-bottom: 1px dotted #000;">
+    <td style="width: 50%;">
+        <span style="display:inline-block; width:75px; font-size:12px; font-weight:700; padding-right:3px;">Drivers:</span>
+        <span style="font-size:12px; font-weight:700;">{First Name:value} {Last Name:value}</span>
+    </td>
+    <td style="width: 50%;">
+        <span style="font-size:12px; font-weight:400;">Insured Driver</span>
+    </td>
+</tr>
+
+{if {Is_there_a_second_driver_:value}="Y"}
+{if {Is_Second_driver_excluded:value}="N"}
+<tr style="border-bottom: 1px dotted #000;">
+    <td style="width: 50%;">
+        <span style="display:inline-block; width:75px;">&nbsp;</span>
+        <span style="font-size:12px; font-weight:700;">{First_Name Driver 2:value} {Last_name_Driver_2:value}</span>
+    </td>
+    <td style="width: 50%;">
+        <span style="font-size:12px; font-weight:400;">Insured Driver</span>
+    </td>
+</tr>
+{/if}
+{/if}
+
+{if {Is_there_a_third_driver:value}="Y"}
+{if {Is_third_driver_excluded:value}="N"}
+<tr style="border-bottom: 1px dotted #000;">
+    <td style="width: 50%;">
+        <span style="display:inline-block; width:75px;">&nbsp;</span>
+        <span style="font-size:12px; font-weight:700;">{First_Name Driver 3:value} {Last_name_Driver 3:value}</span>
+    </td>
+    <td style="width: 50%;">
+        <span style="font-size:12px; font-weight:400;">Insured Driver</span>
+    </td>
+</tr>
+{/if}
+{/if}
+
+{if {Is_there_a_fourth_driver:value}="Y"}
+{if {Is_fourth_driver_excluded:value}="N"}
+<tr style="border-bottom: 1px dotted #000;">
+    <td style="width: 50%;">
+        <span style="display:inline-block; width:75px;">&nbsp;</span>
+        <span style="font-size:12px; font-weight:700;">{First_Name Driver 4:value} {Last_name_Driver 4:value}</span>
+    </td>
+    <td style="width: 50%;">
+        <span style="font-size:12px; font-weight:400;">Insured Driver</span>
+    </td>
+</tr>
+{/if}
+{/if}
+
+
+                  
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Address: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Address:value}</span><br>
+                        <span style="font-size:12px; font-weight:400;">{City:value} , {State:value} , {Zip code :value}</span><br>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{if {Year_Make_Model:value}} 
+    <div style="padding:5px; margin-bottom:5px; margin-top:20px; display:block; width: 100%;">
+        <div>
+            <span style="font-size:16px; font-weight:700; margin-bottom:20px;">Vehicle information</span><br><br>
+        </div>
+        <table style="width:100%; padding-left:30px; border-spacing:0; border-collapse:collapse;">
+            <tbody>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Vehicle: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Year_Make_Model:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Vehicle identification number
+                            (VIN#): </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Vin_Number:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Lienholder: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Lienholder information:value}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{/if}
+{if {Vehicle_2_Year_make_model:value}} 
+    <div style="padding:5px; margin-bottom:5px; margin-top:20px; display:block; width: 100%;">
+        <div>
+            <span style="font-size:16px; font-weight:700; margin-bottom:20px;">Vehicle2 information</span><br><br>
+        </div>
+        <table style="width:100%; padding-left:30px; border-spacing:0; border-collapse:collapse;">
+            <tbody>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Vehicle: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Vehicle_2_Year_make_model:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Vehicle identification number
+                            (VIN#): </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Vehicle_2:value}</span>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+{/if}
+  {if {Vehicle_3_Year_make_model:value}} 
+    <div style="padding:5px; margin-bottom:5px; margin-top:20px; display:block; width: 100%;">
+        <div>
+            <span style="font-size:16px; font-weight:700; margin-bottom:20px;">Vehicle3 information</span><br><br>
+        </div>
+        <table style="width:100%; padding-left:30px; border-spacing:0; border-collapse:collapse;">
+            <tbody>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Vehicle: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Vehicle_3_Year_make_model:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Vehicle identification number
+                            (VIN#): </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Vehicle_3:value}</span>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+{/if}
+{if {Vehicle_4_Year_make_model:value}} 
+    <div style="padding:5px; margin-bottom:5px; margin-top:20px; display:block; width: 100%;">
+        <div>
+            <span style="font-size:16px; font-weight:700; margin-bottom:20px;">Vehicle4 information</span><br><br>
+        </div>
+        <table style="width:100%; padding-left:30px; border-spacing:0; border-collapse:collapse;">
+            <tbody>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Vehicle: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Vehicle_4_Year_make_model:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Vehicle identification number
+                            (VIN#): </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Vehicle_4:value}</span>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+{/if}
+    <div style="padding:5px; margin-bottom:5px; margin-top:20px; display:block; width: 100%;">
+        <div>
+            <span style="font-size:16px; font-weight:700; margin-bottom:20px;">Coverage information</span><br><br>
+        </div>
+        <table style="width:100%; padding-left:30px; border-spacing:0; border-collapse:collapse;">
+            <tbody>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Bodily Injury Liability:
+                        </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Bodily injury :value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Property Damage Liability:
+                        </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{Property damage :value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Collision: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">Veh1{Collision :value} Veh 2 {Veh 2 Collision:value} veh3 {Veh 3 Collision:value}, Veh 4 {Veh 4 Collision:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Comprehensive: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">Veh 1{Comprehensive :value} Veh2{Veh 2 Comprehensive :value} Veh3 {Veh 3 Comprehensive:value} Veh4 {Veh 4 Comprehensive:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Uninsured Motorist: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{UM:value}</span>
+                    </td>
+                   </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:700; padding-right:3px;">Medical payments: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size:12px; font-weight:400;">{medical_payments:value}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="padding:5px; margin-bottom:5px; margin-top:20px; display:block; width: 100%;">
+        <div>
+            <span style="font-size:16px; font-weight:700; margin-bottom:20px;">Additional information:</span><br><br>
+        </div>
+        <table style="width:100%; padding-left:30px; border-spacing:0; border-collapse:collapse;">
+            <tbody>
+                
+                <tr style="border-bottom: 1px dotted #000;" id="message-section">
+                    <td style="width: 100%;">
+                        <span id="message-section-value"
+                            style="font-size:12px; font-weight:400; padding-right:3px;">{Message:value}</span>
+                    </td>
+                </tr>
+
+                <tr style="display:none;"><td id="attach-src-value">{attach file:value}</td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+   
+        <div style="page-break-before: always;"></div>
+        <table style="width:100%; padding-left:30px; border-spacing:0; border-collapse:collapse;">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+ <h2 style="text-align: center; font-size: 18px; margin-top: 0; margin-bottom: 5px;">UNDISCLOSED
+                        DRIVER</h2>
+                    <h3 style="text-align: center; font-size: 16px; margin-top: 0; margin-bottom: 10px;">WARNING! READ
+                        THIS NOTICE CAREFULLY!</h3>
+                    <p style="font-size: 12px; margin-bottom: 10px;">By my signature below, I acknowledge and agree that
+                        ALL persons age 15 years or older who live with me are listed on this Application. In addition,
+                        I agree that ALL persons who do not live with me but who regularly operate or have access to my
+                        vehicle(s) are listed on this Application.</p>
+                    <p style="font-size: 12px; margin-bottom: 10px;">I understand that I have a continuing duty to
+                        notify the Company within 7 days from when any person in my household turns 15 years of age or
+                        when any person age 15 years or older becomes a member of my household as further defined in the
+                        Applicant’s Statement below. In addition, I have a continuing duty to notify the Company within
+                        7 days of any person becoming a Regular Operator of any vehicle listed on the Policy.</p>
+                    <p style="font-size: 12px; margin-bottom: 10px;">I understand the Company may deny coverage if the
+                        answers on this Application are false or misleading and materially affect the risk the Company
+                        assumes by issuing the Policy.</p>
+                    <table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:12px; font-weight:700;"><tr><td style="width:65%; white-space:nowrap;">Applicant's Signature: ________________________________</td><td style="width:35%; text-align:right; white-space:nowrap;">Date: ________________________</td></tr></table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+
+   
+
+    <table style="width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 12px; font-size: 11px; line-height:1.08;">
+
+        <tbody>
+            <tr>
+                <th colspan="2" style="border: 1px solid black; padding: 4px 6px; background-color: #eee;">Applicant`s
+                    Statement</th>
+
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle leased or rented to others?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle regularly available to an operator
+                    that is not listed on this Application?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Do any vehicles have a modified or altered engine or
+                    suspension?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle salvaged, customized, rebuilt,
+                    modified, gray market, in unsafe mechanical condition, or have existing damage?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle equipped with cooking equipment,
+                    bathroom facilities, or snow removal equipment?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Does any vehicle have greater than a one-ton load
+                    capacity or a gross vehicle weight in excess of 10,000 pounds?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle a dump truck, flatbed truck, or
+                    stake-bed truck?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle used as a taxi or limousine?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle used for delivery, the pick-up of
+                    goods, or any other commercial purpose (examples include, but are not limited to, pizza, newspaper,
+                    or mail delivery)?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle used as a public or livery conveyance?
+                </td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle used for racing?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Is any vehicle used to haul explosives or hazardous
+                    materials?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">With the exception of any lien from a person or
+                    financial institution, is any vehicle not solely owned by and registered to you?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Are there any household members (which means anyone
+                    living with you), including any students who are temporarily away attending college, persons away
+                    serving in the military, or persons living sometimes with you but subject to a joint custody
+                    agreement, not listed on this Application?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Are any Regular Operators/drivers of vehicles to be
+                    insured by us not listed in this application whether or not they live with you?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Do you own any vehicle(s) not listed on the
+                    Application that are not insured under any other motor vehicle insurance policy?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Are any listed drivers or vehicles used to drive for
+                    a Transportation Network Company such as Uber, Lyft or Side Car?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">NO</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 4px 6px;">Consent for Policy and Driver service calls and
+                    texts?</td>
+                <td style="width:8%; border: 1px solid black; padding: 4px 3px; text-align:center; white-space:nowrap;">YES</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="width: 100%; border-collapse: collapse; page-break-before: always; margin-top: 0;">
+
+        <tbody>
+            <tr>
+                <th colspan="1" style="border: 1px solid black; padding: 8px; background: #eee;">Applicant's Statement –
+                    Please read carefully.</th>
+
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 7px 8px;">
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">I agree all answers to all questions in this
+                        Application are true and correct. I understand, recognize, and agree said answers are given and
+                        made
+                        for the purpose of inducing the Company to issue the Policy for which I have applied. I further
+                        agree that ALL persons age 15 years or older who live with me, as well as ALL persons who
+                        regularly
+                        operate my vehicles and do not reside in my household, are shown above. I agree that my
+                        principal
+                        residence and place of vehicle garaging is correctly shown above and that the vehicle is in this
+                        state at least 10 months each year. I understand the Company may rescind the Policy if said
+                        answers
+                        on this Application are false or misleading, and materially affect the risk the Company assumes
+                        by
+                        issuing the Policy. In addition, I understand that I have a continuing duty to notify the
+                        Company
+                        within 7 days of any changes of: (1) address; (2) garaging location of vehicles; (3) number,
+                        type,
+                        and use of vehicles to be insured under the Policy. This includes the use of the vehicle to
+                        carry
+                        persons or property for compensation or a fee, ride sharing activity, TNC prearranged trips,
+                        personal vehicle sharing program, limousine, or taxi service, livery conveyance, including
+                        not-for-hire livery, or for retail or wholesale delivery, including but not limited to, the
+                        pickup,
+                        transport, or delivery of magazines, newspapers, mail, or food. (4) residents of my household of
+                        eligible driving age or permit age; (5) driver’s license or permit status (new, revoked,
+                        suspended
+                        or restricted) of any resident of my household; (6) operators using any vehicles to be insured
+                        under
+                        this Policy; or (7) marital status of any resident or family member of my household. I
+                        understand
+                        the Company may rescind this Policy, or cancel the policy, and/or deny coverage if I do not
+                        comply
+                        with my continuing duty of advising the Company of any change as noted above.</p>
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">I understand and agree that in connection with this
+                        Application, the Company may obtain and review vehicle history reports and consumer reports
+                        which
+                        may include: driver history reports; my credit report or an insurance score based on the
+                        information
+                        contained in that credit report; individual background checks on all listed drivers; or personal
+                        or
+                        privileged information from third parties. I further understand and agree that the Company may
+                        use a
+                        third party in connection with the development of my credit-based insurance score; (2)
+                        information
+                        from the consumer reports may be disclosed to affiliated or unaffiliated third parties without
+                        my
+                        prior permission but only as permitted or required by law; (3) upon my written request, the
+                        Company
+                        will inform me if a consumer report was requested and the name and address of the consumer
+                        reporting
+                        agency that furnished the report; (4) I may also request access to and correction of information
+                        the
+                        Company has collected on me; (5) where permitted by law, the Company may request and use
+                        subsequent
+                        consumer reports in updating and renewing any insurance afforded in connection with this
+                        Application; (6) the Company will furnish a more detailed explanation of its information
+                        practices
+                        upon my request; and (7) refusal to authorize the Company to obtain a consumer report may give
+                        the
+                        Company the right to decline insurance to me.</p>
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">I hereby authorize the Company to obtain consumer
+                        reports on my vehicles and consumer reports on me. I agree the named members of my household and
+                        all
+                        other operators of any vehicle(s) to be insured under this Policy have authorized me to consent
+                        on
+                        their behalf to all coverages provided herein and to authorize the Company to obtain consumer
+                        reports on them for the rating and/or underwriting of the insurance for which I am applying and,
+                        where permitted by law, for any renewal thereof. I agree to pay any additional premium owed if
+                        the
+                        amount of premium shown is inaccurate for any reason.</p>
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">I have had the liability coverages and available
+                        limits
+                        available fully explained to me and have selected the limits shown on the Application. I have
+                        had
+                        the different Policy coverage levels available to me fully explained. I made an informed
+                        decision
+                        and have selected the Policy coverage level shown on the Application.</p>
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">I understand the Policy may be rescinded and no
+                        coverage provided if my initial payment or full payment is paid by check, credit card, debit
+                        card,
+                        or other remittance and the bank returns said check unpaid or fails to honor the credit charge
+                        or
+                        debit charge, or other remittance in full. I understand there may be a processing fee imposed on
+                        any
+                        returned checks. I understand processing fees may be included with my initial payment and
+                        installment payments, and additional fees may be charged for late payments. I understand that if
+                        my
+                        policy cancels there may be a cancellation fee. I understand my payments are first applied to
+                        the
+                        fees owed and then to the premium due. I understand and agree that certain fees are
+                        non-refundable
+                        and not part of the premium due. Certain uncollected balances may still be collected after cancellation</p>
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">PUNITIVE AND EXEMPLARY DAMAGES EXCLUDED. I
+                        understand
+                        that in consideration of a reduced premium, the Policy excludes coverage for punitive and
+                        exemplary
+                        damages. Punitive or exemplary damages are those damages which are not compensatory and which
+                        are
+                        awarded to punish, deter, fine or penalize a person’s improper conduct.</p>
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">Consent to Use Cell Phone Number. By providing
+                        phone
+                        number(s) for myself and any other individual(s) I have listed on this application, I
+                        acknowledge
+                        and confirm that I, and each such individual, expressly consent to the Company making policy
+                        related
+                        service calls and/or texts to our respective numbers. Each person has authorized me to give
+                        their
+                        consent to the Company. I agree that I have or will notify them that I have communicated their
+                        consent and that the Company may be calling or texting them as described. If I also consented to
+                        marketing communication as set forth in this application, I understand and agree that the
+                        Company
+                        and its affiliates can use texts, recorded messages, and/or an automated dialer to call me about
+                        insurance quotes, to discuss the status of my policy and about other their other products and
+                        services. I understand that I did not have to agree to that in order to purchase my policy and
+                        that
+                        I can revoke my consent at any time by notifying the Company in writing.</p>
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">I understand my producer will receive compensation
+                        for
+                        this Policy in the form of a commission and may from time to time receive other compensation
+                        from
+                        the Company based on sales and/or profitability.</p>
+                    <p style="font-size: 11px; line-height:1.12; margin:0 0 6px;">WARNING: Any person who, with intent to defraud or
+                        knowing that he is facilitating a fraud against an insurer, submits an application or files a
+                        claim
+                        containing a false or deceptive statement is guilty of insurance fraud.</p>
+                    <table style="width:100%; border-collapse:collapse; font-size:11px; font-weight:700;"><tr><td style="width:70%;">Applicant's Signature: ________________________________</td><td style="width:30%; text-align:right;">Date: ________________________</td></tr></table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<!-- Page break -->
+<div style="page-break-before: always;"></div>
+
+    
+   
+        <div style="margin-bottom:10px;">
+            <p style="text-align: center;"><span style="font-size: 24pt;"><strong><img
+                            src="https://crownsuperior.com/images/logo-pdf.jpg"
+                            alt="crown superior logo" width="320"></strong></span></p>
+            <p style="text-align: center;"> </p>
+            <p style="text-align: center;"><span style="font-size: 18pt;"><strong>Thanks for choosing us. Insurance that
+                        cares.</strong></span></p>
+            <p style="text-align: center;"><span style="font-size: 18pt;"> </span></p>
+            <p style="text-align: center;"><span style="font-size: 18pt;"><strong>For Payments or Customer service
+                        please
+                        call the</strong></span></p>
+            <p style="text-align: center;"><span style="font-size: 18pt;"><strong> numbers below.</strong></span></p>
+            <p style="text-align: center;"><br><br><span style="font-size: 18pt;"><strong>PHONE: 1-866-960-1114 /
+                        678-805-2223</strong></span></p>
+            <p style="text-align: center;"><span style="font-size: 18pt;"><strong>Or contact us by:</strong></span></p>
+            <p style="text-align: center;"><br><span style="font-size: 18pt;"><strong>FAX: 404-795-2114  Email:
+                        Info@crownsuperior.com</strong></span></p>
+            <p style="text-align: center;"><span style="font-size: 18pt;"><strong>or write us at </strong></span></p>
+            <p style="text-align: center;"><span style="font-size: 18pt;"><strong>Po Box 450351 Atlanta Ga
+                        31145</strong></span></p>
+            <p style="text-align: center;"><span style="font-size: 18pt;"><strong>Website: </strong></span></p>
+            <p style="text-align: center;"><span
+                    style="font-size: 18pt; color: #ffcc00;"><strong>https://crownsuperior.com/</strong></span><br><span
+                    style="font-size: 18pt;"> </span><br><span style="font-size: 18pt;"><strong>THANK YOU FOR YOUR
+                        BUSINESS
+                    </strong></span></p>
+
+        </div>
+		<!-- Page break -->
+<div style="page-break-before: always;"></div>
+
+        <table style="width: 100%; border-collapse: collapse; margin-top: 40px;">
+            <tbody>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Description: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <p style="font-size: 9pt; font-weight:400;">{Description:value}</p>
+						<p style="font-size: 9pt; font-weight:400;">{ Detail:value}</p>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">First Name: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{First Name:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Last Name: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Last Name:value}</span>
+                    </td>
+                </tr>
+              {if {Cardholder name:value}="No"}
+				<tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Cardholder's Full name if different from Policyholder's or in Business' name: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Different name on card:value}</span>
+                    </td>
+                </tr>
+				{/if}
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Total Amount Due: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Amount :value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Total Amount Paid: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Amount Paid :value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Down Payment/ Auto club bal.
+                            owed:
+                        </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Amount Owed :value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Due Date: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Due Date :value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Is there an Automatic payment
+                            Set
+                            up: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Auto Pay:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Is there a 2nd payment
+                            arrangement: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{is there a second payment :value}</span>
+                    </td>
+                </tr>
+				<tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Payment 1 Last 4 card#:
+                        </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Payment 1 last 4:value}</span>
+                    </td>
+                   </tr>
+				<tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;"> {Payment 2 last 4:caption}
+                        </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Payment 2 last 4:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">{Cardholder name:caption} </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Different name on card:value} {Cardholder name:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Is there a split payment?:
+                        </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Split Payment :value} Card1 ${Payment 1:value},Card2 ${Payment 2:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Monthly payment amt: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Monthly:value}</span>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px dotted #000;">
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:700; padding-right:3px;">Monthly payment day: </span>
+                    </td>
+                    <td style="width: 50%;">
+                        <span style="font-size: 9pt; font-weight:400;">{Payment_day:value}</span>
+                    </td>
+                </tr>
+				
+        </tbody>
+    </table>
+	<!-- Footer with inline style -->
+<div class="pdf-fixed-footer" style="position: static; width:100%; margin-top:20px; text-align:center; border-top:1px solid black; padding:8px 0 0 0; font-size:12px; page-break-inside:avoid;">   Cardholder's Signature: _______________________ Date: ________________________ <br>
+    Applicant's Signature: _______________________ Date: ________________________
+</div>
+	<!-- Page break -->
+<div style="page-break-before: always;"></div>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 40px;">
+
+        <tbody>
+               <tr>
+                    <td style="border: 1px solid black; padding: 8px;">
+                        <p style="font-size: 12px; margin-bottom: 10px;">CANCELLATION NOTICE All policies are subject to a cancellation
+                                fee
+                                or penalty which can be up to the total amount of your initial deposit. Auto club
+                                packages
+                                are non refundable. Auto club packages typically consist of your rental and towing
+                                reimbursement which are sometimes paid upfront in combination with  your auto 
+                                insurance 
+                                policy  for a discount. Any refunds due will  be returned to the debit or credit  card
+                                used,
+                                credited  to your Crown Superior account or mailed by check to the  address used to
+                                create 
+                                the policy unless requested differently in writing  by  policyholder and allowed by
+                                carrier.
+                                All cancellations  must  be  requested  in  writing.  Submit  your  cancellation request
+                                to
+                                Crown Superior LLC  by Fax,  Email,  Mail  or  in  person.  Policy  will  automatically
+                                cancel  for  non-payment if your monthly payment is not  paid  by  final  due date. 
+                                Crown
+                                Superior LLC reserves the right to refuse future business from a policyolder based on
+                                past
+                                policy experience. For any questions please contact Crown Superior LLC.</p>
+                                <p style="font-size: 12px; margin-bottom: 10px;">I understand that if I pay by check/EFT and my payment is
+                                returned
+                                by my bank for non-sufficient funds or for any other reason, any reinstatement issued
+                                will
+                                be null and void and a fee will be assessed for the returned item. For New Business if
+                                the
+                                payment is not honored by your bank or financial institution, the policy will be null
+                                and
+                                void as of the inception date of coverage.</p>
+                        <p><span style="font-size: 9pt;">________________________                                       
+                                   
+                                   __________________________</span></p>
+                        <p><span style="font-size: 9pt;">      Customer  signature                                     
+                                   
+                                    Cardholder Signature (if different from customer)</span></p>
+                        <p><span style="font-size: 9pt;">________________________                                       
+                                   
+                                    __________________________</span></p>
+                        <p><span style="font-size: 9pt;">                 Date                                         
+                                   
+                                                                         Date</span></p>
+                        <p><span style="font-size: 9pt;">CONSENT TO TEXT MESSAGES:  Crown Superior LLC Will send text
+                                messages to remind customers of there bill or other pertinent policy information. Crown
+                                Superior LLC may also send customers a text for promotional purposes for example to
+                                introduce a lower rate for a customer or a new product. Signing this statement gives
+                                your
+                                consent to be texted by Crown Superior LLC</span></p>
+                        <p><span style="font-size: 9pt;">________________________</span></p>
+                        <p><span style="font-size: 9pt;">      Customer Signature</span></p>
+                        <p><span style="font-size: 9pt;">________________________</span></p>
+                        <p><span style="font-size: 9pt;">                Date</span></p>
+                        <p><span style="font-size: 9pt;">I have read, understood, and agreed to all terms and conditions set forth in this document
+                        <p><span style="font-size: 9pt;">________________________</span></p>
+                        <p><span style="font-size: 9pt;">      Customer Signature</span></p>
+                        <p><span style="font-size: 9pt;">________________________</span></p>
+                        <p><span style="font-size: 9pt;">                Date</span></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+  {if {Add_Nrde:value}="Yes"}
+       <!-- Page break -->
+<div style="page-break-before: always;"></div>
+
+		
+				<div style="padding-bottom:0px;">
+				{nrde_doc:value}
+				</div>
+				
+<div class="pdf-fixed-footer" style="position: static; width:100%; box-sizing:border-box; margin-top:10px; text-align:center; border-top:1px solid black; padding:8px 0 0 0; font-size:12px; page-break-inside:avoid;">
+    <p style="margin:0 0 8px; line-height:1.15;">
+        By Your signature below, You acknowledge and agree that Your acceptance of this Membership is voluntary. It is understood by the undersigned that coverage afforded under this Membership applies only to the vehicle(s) listed above. This Membership does not comply with the financial responsibility or no-fault laws of any state or territory.
+    </p>
+    <table style="width:72%; margin:0 auto; border-collapse:collapse; table-layout:fixed; font-size:9pt;">
+        <tr>
+            <td style="width:50%; text-align:center; padding:2px 10px;">________________________</td>
+            <td style="width:50%; text-align:center; padding:2px 10px;">__________________________</td>
+        </tr>
+        <tr>
+            <td style="text-align:center; padding:2px 10px;">Signature of Member(s)</td>
+            <td style="text-align:center; padding:2px 10px;">Signature of Producer</td>
+        </tr>
+        <tr>
+            <td style="text-align:center; padding:2px 10px;">________________________</td>
+            <td style="text-align:center; padding:2px 10px;">__________________________</td>
+        </tr>
+        <tr>
+            <td style="text-align:center; padding:2px 10px;">Date</td>
+            <td style="text-align:center; padding:2px 10px;">Date</td>
+        </tr>
+    </table>
+</div>
+
+				
+    
+    {/if}
+
+    <!-- CS-EXTRA-PAGES: additional disclosure pages (RSForm free-text component "extra_pages" on form 11) -->
+    {extra_pages:value}
+
+</div>
